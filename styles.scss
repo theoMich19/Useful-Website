@@ -1,0 +1,274 @@
+@import 'scrollbar';
+
+$primary-color: #ffffff;
+$background-color: #1a1a1a;
+$card-background-color: #282828;
+$card-hover-color: #383838;
+$accent-color: #ff6f61;
+$transition-duration: 0.3s;
+$border-radius: 10px;
+$box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+
+$category-colors: (
+    design: #ff6f61,
+    dev: #6fa3ff,
+    tools: #61ff85,
+    utils: #ffa261,
+    framework: #ff61a8,
+    games: #f39c12,
+    languages: #3498db
+);
+
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: $background-color;
+    background-image: url('assets/images/background.webp'); 
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: $primary-color;
+    line-height: 1.6;
+}
+
+header {
+    text-align: center;
+    padding: 10px;
+    background-color: $card-background-color;
+
+    .welcome-message {
+        font-size: 2.5rem;
+        color: $accent-color;
+        margin: 0;
+        animation: fadeIn 2s ease-in-out;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.search-filter {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+    padding: 0 20px;
+
+    input {
+        padding: 12px 15px;
+        margin-right: 10px;
+        border: none;
+        border-radius: $border-radius;
+        background-color: $card-background-color;
+        color: $primary-color;
+        box-shadow: $box-shadow;
+        font-size: 1rem;
+        transition: background-color $transition-duration;
+
+        &:focus {
+            background-color: $card-hover-color;
+            outline: none;
+        }
+    }
+    
+    .multi-select {
+        position: relative;
+        .select-box {
+            background-color: $card-background-color;
+            padding: 12px 15px;
+            border-radius: $border-radius;
+            box-shadow: $box-shadow;
+            cursor: pointer;
+            position: relative;
+            min-width: 200px;
+
+            .placeholder {
+                color: $primary-color;
+                font-size: 1rem;
+            }
+
+            .options-container {
+                display: none;
+                position: absolute;
+                top: 110%;
+                left: 0;
+                width: 100%;
+                background-color: $card-background-color;
+                box-shadow: $box-shadow;
+                border-radius: $border-radius;
+                max-height: 200px;
+                overflow-y: auto;
+                z-index: 100;
+
+                label {
+                    display: block;
+                    padding: 10px;
+                    cursor: pointer;
+                    color: $primary-color;
+                    &:hover {
+                        background-color: $card-hover-color;
+                    }
+                    input {
+                        margin-right: 10px;
+                    }
+                }
+            }
+
+            &.active .options-container {
+                display: block;
+            }
+        }
+    }
+}
+
+.card-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    padding: 20px;
+
+    @media (max-width: 768px) {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (max-width: 480px) {
+        grid-template-columns: 1fr;
+    }
+}
+
+.card {
+    background-color: $card-background-color;
+    border-radius: $border-radius;
+    box-shadow: $box-shadow;
+    overflow: hidden;
+    transition: transform $transition-duration, box-shadow $transition-duration;
+    cursor: pointer;
+    text-decoration: none;
+    color: $primary-color;
+    display: block;
+    padding: 20px;
+
+    &:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        background-color: $card-hover-color;
+    }
+
+    h2 {
+        margin-top: 0;
+        font-size: 1.5rem;
+        text-align: center;
+    }
+
+    .category-container {
+        display: flex;
+        justify-content: center;
+        margin: 15px 0;
+
+        .category-badge {
+            background-color: $primary-color;
+            color: $background-color;
+            border-radius: $border-radius;
+            padding: 5px 10px;
+            margin: 0 5px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            box-shadow: $box-shadow;
+            transition: background-color $transition-duration;
+
+            &.design {
+                background-color: #ff6f61;
+            }
+            &.dev {
+                background-color: #6fa3ff;
+            }
+            &.tools {
+                background-color: #61ff85;
+            }
+            &.utils {
+                background-color: #ffa261;
+            }
+            &.framework {
+                background-color: #ff61a8;
+            }
+            &.games {
+                background-color: #f39c12;
+            }
+            &.python, &.javascript, &.php {
+                background-color: #3498db;
+            }
+        }
+    }
+
+    p.description {
+        text-align: justify;
+        margin-bottom: 0;
+    }
+
+    &.visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+footer {
+    background-color: #1a1a1a; 
+    padding: 20px 0;
+    color: #ffffff; 
+    font-size: 0.9rem;
+
+    .footer-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+    }
+
+    .footer-left,
+    .footer-center,
+    .footer-right {
+        flex: 1;
+        text-align: center; 
+    }
+
+    .footer-left {
+        text-align: left; 
+    }
+
+    .footer-center {
+        text-align: center; 
+    }
+
+    .footer-right {
+        text-align: right; 
+
+        a {
+            margin-left: 10px; 
+            color: #ffffff;
+            text-decoration: none;
+
+            .footer-right svg {
+                width: 24px;
+                height: 24px;
+                margin-left: 10px;
+                fill: #ffffff; 
+                transition: opacity 0.3s ease;
+            
+                &:hover {
+                    opacity: 0.7;
+                    transform: scale(1.2);
+                }
+            }
+            
+        }
+    }
+}

@@ -1,0 +1,230 @@
+body {
+  margin: 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #1a1a1a;
+  background-image: url("assets/images/background.webp");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: #ffffff;
+  line-height: 1.6;
+}
+
+header {
+  text-align: center;
+  padding: 10px;
+  background-color: #282828;
+}
+header .welcome-message {
+  font-size: 2.5rem;
+  color: #ff6f61;
+  margin: 0;
+  animation: fadeIn 2s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.search-filter {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+  padding: 0 20px;
+}
+.search-filter input {
+  padding: 12px 15px;
+  margin-right: 10px;
+  border: none;
+  border-radius: 10px;
+  background-color: #282828;
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  font-size: 1rem;
+  transition: background-color 0.3s;
+}
+.search-filter input:focus {
+  background-color: #383838;
+  outline: none;
+}
+.search-filter .multi-select {
+  position: relative;
+}
+.search-filter .multi-select .select-box {
+  background-color: #282828;
+  padding: 12px 15px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  position: relative;
+  min-width: 200px;
+}
+.search-filter .multi-select .select-box .placeholder {
+  color: #ffffff;
+  font-size: 1rem;
+}
+.search-filter .multi-select .select-box .options-container {
+  display: none;
+  position: absolute;
+  top: 110%;
+  left: 0;
+  width: 100%;
+  background-color: #282828;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  max-height: 200px;
+  overflow-y: auto;
+  z-index: 100;
+}
+.search-filter .multi-select .select-box .options-container label {
+  display: block;
+  padding: 10px;
+  cursor: pointer;
+  color: #ffffff;
+}
+.search-filter .multi-select .select-box .options-container label:hover {
+  background-color: #383838;
+}
+.search-filter .multi-select .select-box .options-container label input {
+  margin-right: 10px;
+}
+.search-filter .multi-select .select-box.active .options-container {
+  display: block;
+}
+
+.card-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  padding: 20px;
+}
+@media (max-width: 768px) {
+  .card-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 480px) {
+  .card-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+.card {
+  background-color: #282828;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s, box-shadow 0.3s;
+  cursor: pointer;
+  text-decoration: none;
+  color: #ffffff;
+  display: block;
+  padding: 20px;
+}
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  background-color: #383838;
+}
+.card h2 {
+  margin-top: 0;
+  font-size: 1.5rem;
+  text-align: center;
+}
+.card .category-container {
+  display: flex;
+  justify-content: center;
+  margin: 15px 0;
+}
+.card .category-container .category-badge {
+  background-color: #ffffff;
+  color: #1a1a1a;
+  border-radius: 10px;
+  padding: 5px 10px;
+  margin: 0 5px;
+  font-size: 0.9rem;
+  font-weight: bold;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s;
+}
+.card .category-container .category-badge.design {
+  background-color: #ff6f61;
+}
+.card .category-container .category-badge.dev {
+  background-color: #6fa3ff;
+}
+.card .category-container .category-badge.tools {
+  background-color: #61ff85;
+}
+.card .category-container .category-badge.utils {
+  background-color: #ffa261;
+}
+.card .category-container .category-badge.framework {
+  background-color: #ff61a8;
+}
+.card .category-container .category-badge.games {
+  background-color: #f39c12;
+}
+.card .category-container .category-badge.python, .card .category-container .category-badge.javascript, .card .category-container .category-badge.php {
+  background-color: #3498db;
+}
+.card p.description {
+  text-align: justify;
+  margin-bottom: 0;
+}
+.card.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+footer {
+  background-color: #1a1a1a;
+  padding: 20px 0;
+  color: #ffffff;
+  font-size: 0.9rem;
+}
+footer .footer-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+footer .footer-left,
+footer .footer-center,
+footer .footer-right {
+  flex: 1;
+  text-align: center;
+}
+footer .footer-left {
+  text-align: left;
+}
+footer .footer-center {
+  text-align: center;
+}
+footer .footer-right {
+  text-align: right;
+}
+footer .footer-right a {
+  margin-left: 10px;
+  color: #ffffff;
+  text-decoration: none;
+}
+footer .footer-right a .footer-right svg {
+  width: 24px;
+  height: 24px;
+  margin-left: 10px;
+  fill: #ffffff;
+  transition: opacity 0.3s ease;
+}
+footer .footer-right a .footer-right svg:hover {
+  opacity: 0.7;
+  transform: scale(1.2);
+}/*# sourceMappingURL=styles.css.map */
